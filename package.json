@@ -7,6 +7,10 @@
     "@josulliv101/connect-async-work": "latest",
     "@josulliv101/delay-route": "latest",
     "axios": "^0.16.2",
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.4.5",
+    "babel-register": "^6.5.2",
+    "express": "^4.13.4",
     "lodash.debounce": "^4.0.8",
     "material-ui": "next",
     "material-ui-icons": "^1.0.0-alpha.19",
@@ -20,30 +24,32 @@
     "redux-batched-subscribe": "^0.1.6",
     "serialize-javascript": "^1.1.2",
     "serve-favicon": "^2.4.3"
-  }, 
+  },
   "devDependencies": {
-    "babel-cli": "^6.5.1",
-    "babel-core": "^6.4.5",
     "babel-eslint": "^5.0.0-beta9",
     "babel-loader": "^6.2.2",
     "babel-plugin-module-alias": "^1.2.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
-    "babel-register": "^6.5.2",
+    "clean-webpack-plugin": "^0.1.14",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^1.10.3",
     "eslint-config-rackt": "^1.1.1",
     "eslint-plugin-react": "^3.16.1",
-    "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^2.0.0-beta",
     "file-loader": "^0.11.2",
     "nodemon": "^1.11.0",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^1.12.13",
-    "webpack-dev-middleware": "^1.5.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1"
   },
   "scripts": {
-    "start": "nodemon server.js --ignore node_modules/ --exec babel-node"
+    "start": "nodemon server.development.js --ignore node_modules/ --exec babel-node",
+    "start:prod": "NODE_ENV=production babel-node server.production.js",
+    "build:client": "webpack --display-error-details --config webpack.config.production.js"
   }
 }

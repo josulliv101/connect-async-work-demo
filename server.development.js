@@ -4,7 +4,7 @@ import serialize from 'serialize-javascript'
 
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackConfig from './webpack.config'
+import webpackConfig from './webpack.config.development'
 
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
@@ -55,13 +55,14 @@ const enhancers = [
   })
 ]
 
+const compiler = webpack(webpackConfig);
 
-app.use(webpackDevMiddleware(webpack(webpackConfig), {
+app.use(webpackDevMiddleware(compiler, {
   publicPath: '/__build__/',
   stats: {
     colors: true
   }
-}))
+}));
 
 const HTML = ({ content, store, css }) => (
   <html>
