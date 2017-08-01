@@ -153,7 +153,7 @@ app.use(function (req, res) {
 
 const server = http.createServer(app);
 
-server.listen(8080, function () {
+server.listen(process.env.PORT || 8080, function () {
   console.log('Server listening on http://localhost:8080, Ctrl+C to stop')
 })
 
