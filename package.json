@@ -32,7 +32,6 @@
     "serve-favicon": "^2.4.3"
   },
   "devDependencies": {
-
     "clean-webpack-plugin": "^0.1.14",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
@@ -50,7 +49,7 @@
   },
   "scripts": {
     "start": "nodemon server.development.js --ignore node_modules/ --exec babel-node",
-    "start:prod": "NODE_ENV=production babel-node server.production.js",
+    "start:prod": "babel-node server.production.js",
     "build:client": "webpack --display-error-details --config webpack.config.production.js"
   }
 }
