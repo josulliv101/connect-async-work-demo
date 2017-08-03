@@ -21,9 +21,10 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.css$/, loaders: ['style', 'css-loader'] },
+      { test: /\.css$/, exclude: /node_modules/, loaders: ['style', 'css-loader'] },
       {
         test: /\.(eot|ttf|woff|woff2|svg)$/,
+        exclude: /node_modules/,
         loader: 'file-loader?name=fonts/[name].[ext]',
       },
       {

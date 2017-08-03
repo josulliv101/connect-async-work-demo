@@ -1,5 +1,4 @@
 import 'babel-polyfill'
-
 import React from 'react'
 import { render } from 'react-dom'
 import debounce from 'lodash.debounce'
@@ -7,17 +6,14 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
-import {middleware as asyncWorkMiddleware, reducer as asyncWorkReducer} from '@josulliv101/connect-async-work'
-import { batchedSubscribe } from './batchedSubscribe';
-
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import createPalette from 'material-ui/styles/palette'
 import { red, blue } from 'material-ui/colors'
-
+import {batchedSubscribe, middleware as asyncWorkMiddleware, reducer as asyncWorkReducer} from '@josulliv101/connect-async-work'
+//
+import { configureStore } from './redux/createStore'
 import App from './components/App'
 
-
-// Create a theme instance.
 const theme = createMuiTheme({
   palette: createPalette({
     primary: blue,
@@ -32,34 +28,10 @@ const theme = createMuiTheme({
       },
     },
   }),
-});
-
-const devtools = typeof window === 'object' && window.devToolsExtension ?
-  window.devToolsExtension : (() => noop => noop)
- 
-const middlewares = [
-  asyncWorkMiddleware, 
-]
-
-const history = createHistory()
-
-const reducer = combineReducers({
-	asyncwork: asyncWorkReducer,
 })
 
-const enhancers = [
-  applyMiddleware(...middlewares),
-  devtools(),
-  batchedSubscribe((notify, state) => {
-    console.log('state', state)
-    if (!state || !state.asyncwork || !state.asyncwork.loadState) return notify()
-    const {loadState} =  state.asyncwork
-    const loading = Object.keys(loadState).some(key => loadState[key] && loadState[key].loading)
-    if (!loading) notify()
-  })
-]
-
-const store = createStore(reducer, window.__initialState__, compose(...enhancers))
+const store = configureStore(window.__initialState__)
+const history = createHistory()
 
 render(
   <Provider store={store}>

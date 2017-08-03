@@ -1,4 +1,4 @@
-connect-async-work server example
-=================================
+demo app for connect-async-work 
+===============================
 
 Still in progress.

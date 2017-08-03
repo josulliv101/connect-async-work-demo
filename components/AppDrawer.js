@@ -59,7 +59,7 @@ function reduceChildRoutes(props, items, childRoute, index) {
       <AppDrawerNavItem
         key={index}
         title={childRoute.label}
-        to={childRoute.path}
+        to={childRoute.linkPath || childRoute.path}
         onClick={props.onRequestClose}
       />,
     );

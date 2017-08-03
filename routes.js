@@ -20,7 +20,7 @@ var routes = () => {
         { path: '/nested-content', component: NestedContent, label: 'Nested Content' },
         { path: '/nested-routes', component: NestedRoutes, label: 'Nested Routes Parent' },
         { path: '/nested-routes/foo', label: 'Nested Routes Child' },
-        { path: '/dynamic-key/:id', component: DynamicKey, label: 'Dynamic Key', id: 999 },
+        { path: '/dynamic-key/:id', component: DynamicKey, label: 'Dynamic Key', linkPath: '/dynamic-key/foobar' },
       ],
     },
   ]

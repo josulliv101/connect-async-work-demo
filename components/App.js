@@ -14,7 +14,7 @@ import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
-import Settings from 'material-ui-icons/Settings'
+import Settings from 'material-ui-icons/BrightnessLow'
 import Fav from 'material-ui-icons/FavoriteBorder'
 import AppDrawer from './AppDrawer'
 import { CircularProgress } from 'material-ui/Progress';
@@ -85,13 +85,17 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
   progress: {
     position: 'absolute',
     zIndex: 999,
-    top: 0,
+    top: 16,
     left: `calc(50% - ${theme.spacing.unit * 2}px)`,
-    transform: 'translate(-50%, 50%)',
-    margin: `0 ${theme.spacing.unit * 2}px`,
+    // transform: 'translate(-50%, 19%)',
+    margin: `0`
   },
   primaryColor: {
     color: 'white',
+  },
+  logo: {
+    width: 36,
+    height: 36,
   },
   content: theme.mixins.gutters({
     paddingTop: 80,
@@ -128,15 +132,10 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
     <AppBar elevation={1} className={classes.appBarShift}>
       <Toolbar className={classNames(classes.primaryColor)} >
         <Typography type="title" color="inherit" className={classes.flex}>
-          playground
+          demo
         </Typography>
-        <IconButton color="inherit">
-          <Settings />
-        </IconButton>
+        <Settings className={classNames(classes.logo, classes.progress, {spinner: loading})} />
       </Toolbar>
-      { loading && <CircularProgress 
-        className={classNames(classes.progress, classes.primaryColor)} 
-        size={32} color="primary" /> }
     </AppBar>
     <AppDrawer
       className={classes.drawer}
@@ -151,7 +150,7 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
           <RouteSwitch>
             { getRoutes()
                 .reduce((arr, item) => arr.concat(item.routes), [])
-                .map( ({label, ...route}) => <Route key={label} {...route} /> ) 
+                .map( ({label, linkPath, ...route}) => <Route key={label} {...route} /> ) 
             }
           </RouteSwitch>
         </DelayRoute>

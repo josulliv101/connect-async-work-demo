@@ -1,35 +1,14 @@
 import React from 'react'
-import axios, { CancelToken } from 'axios'
-import { CANCEL } from 'redux-saga'
-
 import { withAsyncWork } from '@josulliv101/connect-async-work'
-import { delay } from '../utils'
+//
+import api from '../api'
 
-/*
-function fetchAPI(url) {
-  const source = CancelToken.source()
-  const request = axios.get(url, { cancelToken: source.token })
-  request[CANCEL] = () => source.cancel('React Component unmounted before async work resolved.')
-  return request
-}
-*/
+const work = [{ 
+  key: 'users', 
+  work : () => api(`https://reqres.in/api/users?delay=1`).then(resp => resp.data)
+}]
 
-function fetchAPI(url) {
-  const source = CancelToken.source()
-  const request = axios.get(url, { 
-    cancelToken: source.token, 
-    transformResponse: axios.defaults.transformResponse.concat((resp) => {
-      return resp.data
-    }) 
-  })
-  request['CANCEL'] = () => source.cancel('React Component unmounted before async work resolved.')
-  return request
-}
-
-const url = `https://reqres.in/api/users?delay=0`;
-
-const work = [{ key: 'users', work : () => fetchAPI(url) }]
-
+// This loading is specific to this work, not the whole app.
 function Foo({loading, users = []}) {
   console.log('Foo / render')
   return (
