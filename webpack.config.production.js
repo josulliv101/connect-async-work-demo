@@ -1,7 +1,6 @@
 const path = require('path');
 
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = function (env) {
@@ -32,13 +31,6 @@ module.exports = function (env) {
     },
     module: {
       loaders: [
-        {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            loader: 'css-loader',
-          }),
-        },
         {
           test: /\.(eot|ttf|woff|woff2|svg)$/,
           loader: 'file-loader?name=fonts/[name].[ext]',
@@ -71,7 +63,6 @@ module.exports = function (env) {
           NODE_ENV: JSON.stringify('production'),
         },
       }),
-      new ExtractTextPlugin('public/bundle.[contenthash].css'),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,
