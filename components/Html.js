@@ -14,7 +14,7 @@ export default function Html({ content, store, css }) {
         <div id="root" dangerouslySetInnerHTML={{ __html: content }}/>
         <style id="jss-server-side" dangerouslySetInnerHTML={{ __html: css }} />
         <script dangerouslySetInnerHTML={{ __html: `window.__initialState__=${serialize(store)}` }}/>
-        <script src="/__build__/bundle.js"/>
+        <script src="/build/bundle.js"/>
       </body>
     </html>
   )

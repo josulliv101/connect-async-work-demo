@@ -97,6 +97,9 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
     width: 36,
     height: 36,
   },
+  lite: {
+    opacity: .6,
+  },
   content: theme.mixins.gutters({
     paddingTop: 80,
     flex: '1 1 100%',
@@ -144,9 +147,9 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
       onRequestClose={noop => noop}
       open={true}
     />
-    <section className={classes.content}>
+    <section className={classNames(classes.content, {[classes.lite]: loading})}>
       <main className="delay-route" >
-        <DelayRoute delay={!asyncRender && loading} >
+        <DelayRoute delay={loading} >
           <RouteSwitch>
             { getRoutes()
                 .reduce((arr, item) => arr.concat(item.routes), [])
@@ -154,13 +157,6 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
             }
           </RouteSwitch>
         </DelayRoute>
-{/*        <div>
-          <FormControlLabel control={<Switch />} label="Delay routes with async work" />
-          <FormControlLabel control={<Switch />} label="Show Placeholder Content while loading" />
-          <IconButton color="inherit">
-            <Settings /> Reset Redux Store (so routes with async work will need loading again)
-          </IconButton>        
-        </div>*/}
       </main>
     </section>
     <footer className={classes.footer}>
@@ -168,15 +164,6 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
     </footer>
   </div> 
 )
-
-/*function NavItem({path: pathProp, label, id}) {
-  const path = id ? pathProp.replace(':id', id) : pathProp
-  return (
-    <li key={path}>
-      <Link to={path}>{label}</Link>
-    </li>
-  )
-}*/
 
 const mapStateToProps = ({asyncwork: {loadState}}) => ({
   // Checks if any keys are loading. The load property on HOCs is only for specified work.

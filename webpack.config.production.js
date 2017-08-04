@@ -9,17 +9,12 @@ module.exports = function (env) {
     entry: {
       app: [
         './client.js',
-      ],
-      vendor: [
-        'babel-polyfill',
-        'react',
-        'react-dom',
-      ],
+      ]
     },
     output: {
       path: path.resolve(__dirname, 'build'),
-      filename: '[name].js',
-      publicPath: '/',
+      filename: 'bundle.js',
+      publicPath: '/build',
     },
     resolve: {
       alias: {
@@ -77,26 +72,13 @@ module.exports = function (env) {
         },
       }),
       new ExtractTextPlugin('public/bundle.[contenthash].css'),
-      new webpack.optimize.CommonsChunkPlugin({
-          names: ['vendor']
-      }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,
         },
       })
     ],
-    devtool: 'source-map',
-    stats: {
-      children: false,
-      assets: false,
-      colors: true,
-      version: false,
-      hash: false,
-      timings: false,
-      chunks: false,
-      chunkModules: false
-    },
+    devtool: 'source-map'
   };
 
   return webpackConfig;

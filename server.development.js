@@ -13,8 +13,9 @@ const app = express()
 const compiler = webpack(webpackConfig)
 
 app.use(favicon(path.join(__dirname, 'favicon.ico')))
+app.use('/build', express.static(path.join(__dirname, 'build')));
 app.use(webpackDevMiddleware(webpack(webpackConfig), {
-  publicPath: '/__build__/',
+  publicPath: '/build/',
   stats: {
     colors: true
   }
