@@ -52,6 +52,6 @@
     "start": "nodemon server.development.js --ignore node_modules/ --exec babel-node",
     "start:prod": "NODE_ENV=production babel-node server.production.js",
     "build:client": "NODE_ENV=production webpack --display-error-details --config webpack.config.production.js",
-    "heroku-postbuild": "build:client"
+    "heroku-postbuild": "npm run build:client"
   }
 }
