@@ -1,47 +1,19 @@
 import React from 'react'
-import { create } from 'jss';
 import ReactDOMServer from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
-import preset from 'jss-preset-default';
 import { JssProvider, SheetsRegistry } from 'react-jss'
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import createPalette from 'material-ui/styles/palette';
-import createGenerateClassName from 'material-ui/styles/createGenerateClassName';
-import { blue, red } from 'material-ui/colors';
+import { MuiThemeProvider } from 'material-ui/styles';
 import { batchedSubscribe } from '@josulliv101/connect-async-work'
 //
 import { batchAsyncWork } from './utils'
 import { App, Html } from './components'
 import { configureStore } from './redux/createStore'
-
+import { configureJss, theme } from './theme'
 
 export default function (req, res) {
-
-  // Create a sheetsRegistry instance.
-  const sheetsRegistry = new SheetsRegistry();
-
-  // Create a theme instance.
-  const theme = createMuiTheme({
-    palette: createPalette({
-      primary: blue,
-      accent: red,
-      type: 'light',
-    }),
-    overrides: {
-      MuiCircularProgress: {
-        // Name of the styleSheet
-        primaryColor: {
-          color: 'white',
-        },
-      },
-    },
-  });
-
-  // Configure JSS
-  const jss = create(preset());
-  jss.options.createGenerateClassName = createGenerateClassName;
-
+  const sheetsRegistry = new SheetsRegistry()
+  const jss = configureJss()
   // Add an enhancer to the store that only emits once all the async work is complete.
   // It doesn't emit for anything else... only on async work completion (if any).
   // This enhancer is only included on the server.
@@ -51,7 +23,7 @@ export default function (req, res) {
     <Provider store={store}>
       <StaticRouter context={{}} location={req.url}>
         <JssProvider registry={sheetsRegistry} jss={jss}>
-          <MuiThemeProvider theme={theme} sheetsManager={new WeakMap()}>
+          <MuiThemeProvider theme={theme()} sheetsManager={new WeakMap()}>
             <App />
           </MuiThemeProvider>
         </JssProvider>
@@ -83,47 +55,6 @@ export default function (req, res) {
   function handleResponse(content) {
     
     const css = sheetsRegistry.toString()
-    const spinner = `
-      .spinner {
-          -webkit-animation-name: spin;
-          -webkit-animation-duration: 2000ms;
-          -webkit-animation-iteration-count: infinite;
-          -webkit-animation-timing-function: linear;
-          -moz-animation-name: spin;
-          -moz-animation-duration: 2000ms;
-          -moz-animation-iteration-count: infinite;
-          -moz-animation-timing-function: linear;
-          -ms-animation-name: spin;
-          -ms-animation-duration: 2000ms;
-          -ms-animation-iteration-count: infinite;
-          -ms-animation-timing-function: linear;
-          
-          animation-name: spin;
-          animation-duration: 2000ms;
-          animation-iteration-count: infinite;
-          animation-timing-function: linear;
-      }
-      @-ms-keyframes spin {
-          from { -ms-transform: rotate(0deg); }
-          to { -ms-transform: rotate(360deg); }
-      }
-      @-moz-keyframes spin {
-          from { -moz-transform: rotate(0deg); }
-          to { -moz-transform: rotate(360deg); }
-      }
-      @-webkit-keyframes spin {
-          from { -webkit-transform: rotate(0deg); }
-          to { -webkit-transform: rotate(360deg); }
-      }
-      @keyframes spin {
-          from {
-              transform:rotate(0deg);
-          }
-          to {
-              transform:rotate(360deg);
-          }
-      }
-    `
     // Cleanup
     unsubscribe()
 
@@ -135,7 +66,7 @@ export default function (req, res) {
     } else {
       res.write(`
         <!doctype html>
-        ${ReactDOMServer.renderToStaticMarkup(<Html content={content} css={css+spinner} store={store.getState()} />)}
+        ${ReactDOMServer.renderToStaticMarkup(<Html content={content} css={css} store={store.getState()} />)}
       `)
       res.end()
     } 

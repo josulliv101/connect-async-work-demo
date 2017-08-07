@@ -14,7 +14,7 @@ import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
-import Settings from 'material-ui-icons/BrightnessLow'
+import Settings from 'material-ui-icons/FavoriteBorder'
 import Fav from 'material-ui-icons/FavoriteBorder'
 import AppDrawer from './AppDrawer'
 import { CircularProgress } from 'material-ui/Progress';
@@ -98,7 +98,11 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
     height: 36,
   },
   lite: {
-    opacity: .6,
+    opacity: .4,
+  },
+  loadingHint: {
+    fontWeight: 300,
+    fontSize: 16,
   },
   content: theme.mixins.gutters({
     paddingTop: 80,
@@ -135,9 +139,9 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
     <AppBar elevation={1} className={classes.appBarShift}>
       <Toolbar className={classNames(classes.primaryColor)} >
         <Typography type="title" color="inherit" className={classes.flex}>
-          demo
+          demo {loading && <span className={classes.loadingHint}>/ loading</span>}
         </Typography>
-        <Settings className={classNames(classes.logo, classes.progress, {spinner: loading})} />
+        <Settings className={classNames(classes.logo, classes.progress)} />
       </Toolbar>
     </AppBar>
     <AppDrawer

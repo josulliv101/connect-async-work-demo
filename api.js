@@ -5,6 +5,6 @@ export default function SimpleApi(url) {
   const request = axios.get(url, { 
     cancelToken: source.token, 
   })
-  request['CANCEL'] = () => source.cancel('Request cancelled by unmounting react component.')
+  request['CANCEL'] = () => source.cancel('Request cancelled.')
   return request.then((resp) => resp.data).catch((err) => err)
 }
