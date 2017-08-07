@@ -7,8 +7,9 @@ const work = [{ key: 'bar', work : () => delay(2600).then(() => 'bar work resolv
 function Bar(props) {
   return (
   	<div>
-  	  <h3>And Bar Async Work</h3>
-      <h4>bar work status is {props.loading ? 'loading...' : 'loaded'}</h4>
+  	  <h3>Bar Async Work</h3>
+      <h4 className="loadStatus">bar work status is {props.loading ? 'loading...' : 'loaded'}</h4>
+      <p>This example uses 'setTimeout' to delay a Promise resolving and displays it.</p>
   	  <p>{props.bar}</p>	
   	</div>
   )

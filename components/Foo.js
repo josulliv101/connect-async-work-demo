@@ -10,11 +10,11 @@ const work = [{
 
 // This loading is specific to this work, not the whole app.
 function Foo({loading, users = []}) {
-  console.log('Foo / render')
   return (
   	<div>
   		<h3>Foo Async Work</h3>
-      <h4>bar work status is {loading ? 'loading...' : 'loaded'}</h4>
+      <h4 className="loadStatus">bar work status is {loading ? 'loading...' : 'loaded'}</h4>
+      <p>This example grabs some data from a rest api and displays it.</p>
   		<ul>
         {users.map(user => <li key={user.id}>{user.first_name}</li>)}  
       </ul>

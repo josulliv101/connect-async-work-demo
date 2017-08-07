@@ -5,19 +5,25 @@ var routes = () => {
     { 
       label: 'Basic', 
       routes: [
-        { path: '/', exact: true, component: Home, label: 'Home' },
-        { path: '/foo', component: Foo, label: 'Foo' },
+        { path: '/', exact: true, component: Home, label: 'Home', nav: false },
         { path: '/bar', component: Bar, label: 'Bar' },
+        { path: '/foo', component: Foo, label: 'Foo' },
         { path: '/multi', component: Multi, label: 'Multi' },
+        { path: '/nested-content', component: NestedContent, label: 'Nested Content' },
       ],
     },
     {
       label: 'Advanced', 
       routes: [
-        { path: '/nested-content', component: NestedContent, label: 'Nested Content' },
-        { path: '/nested-routes', component: NestedRoutes, label: 'Nested Routes Parent' },
-        { path: '/nested-routes/foo', label: 'Nested Routes Child' },
         { path: '/dynamic-key/:id', component: DynamicKey, label: 'Dynamic Key', linkPath: '/dynamic-key/foobar' },
+      ],
+    },
+    {
+      label: 'Nested Routes', 
+      routes: [
+        { path: '/nested-routes', component: NestedRoutes, label: 'Nested Routes Home' },
+        { path: '/nested-routes/foo', label: 'Nested Routes Foo' },
+        { path: '/nested-routes/bar', label: 'Nested Routes Bar' },
       ],
     },
   ]

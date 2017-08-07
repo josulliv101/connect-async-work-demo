@@ -15,7 +15,7 @@ function DynamicKey({ loading, keys: [workKey], [workKey]: users = [], ...props 
   return (
   	<div>
   		<h3>DynamicKey Async Work</h3>
-      <h4>DynamicKey work status is {loading ? 'loading...' : 'loaded'}</h4>
+      <h4 className="loadStatus">DynamicKey work status is {loading ? 'loading...' : 'loaded'}</h4>
   		<p>{users.map(item => <img key={item.id} src={item.avatar} />)}</p>
   	</div>
   )

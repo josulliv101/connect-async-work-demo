@@ -88,6 +88,7 @@ class AppDrawerNavItem extends Component {
             root: classes.button,
             label: openImmediately ? 'algolia-lvl0' : '',
           }}
+          disableRipple
           onClick={this.handleClick}
         >
           {title}

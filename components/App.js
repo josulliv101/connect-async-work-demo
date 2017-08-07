@@ -54,7 +54,10 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
     'h1,h2,h3,h4,h5,h6': {
       fontWeight: 400,
     },
-
+    '.loadStatus': {
+      padding: theme.spacing.unit * 2,
+      border: `${common.lightBlack} 1px solid`,
+    },
   },
   root: {
     display: 'flex',

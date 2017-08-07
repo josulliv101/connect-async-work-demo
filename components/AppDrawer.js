@@ -35,7 +35,7 @@ function renderNavItems(props, navRoot) {
 
   if (navRoot.routes && navRoot.routes.length) {
     // eslint-disable-next-line no-use-before-define
-    navItems = navRoot.routes.reduce(reduceChildRoutes.bind(null, props), []);
+    navItems = navRoot.routes.filter(r => !(r.nav === false)).reduce(reduceChildRoutes.bind(null, props), []);
   }
 
   return (

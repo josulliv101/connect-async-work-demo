@@ -11,7 +11,8 @@ function Multi(props) {
   return (
   	<div>
   	  <h3>Multiple Async Work Items</h3>
-      <h4>bar work status is {props.loading ? 'loading...' : 'loaded'}</h4>
+      <h4 className="loadStatus">bar work status is {props.loading ? 'loading...' : 'loaded'}</h4>
+      <p>This example has 2 work items (2 Promises delayed with 'setTimeout') Once both work items are resolved, the data is displayed.</p>
   	  <p>{props.multi1}</p>	
   	  <p>{props.multi2}</p>	
   	</div>
