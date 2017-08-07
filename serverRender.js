@@ -11,6 +11,8 @@ import { App, Html } from './components'
 import { configureStore } from './redux/createStore'
 import { configureJss, theme } from './style'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 export default function (req, res) {
   const sheetsRegistry = new SheetsRegistry()
   const jss = configureJss()
@@ -66,7 +68,7 @@ export default function (req, res) {
     } else {
       res.write(`
         <!doctype html>
-        ${ReactDOMServer.renderToStaticMarkup(<Html content={content} css={css} store={store.getState()} />)}
+        ${ReactDOMServer.renderToStaticMarkup(<Html useAnalytics={isProd} content={content} css={css} store={store.getState()} />)}
       `)
       res.end()
     } 
