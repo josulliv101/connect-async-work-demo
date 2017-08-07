@@ -14,7 +14,6 @@ import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
-import Settings from 'material-ui-icons/FavoriteBorder'
 import Fav from 'material-ui-icons/FavoriteBorder'
 import { CircularProgress } from 'material-ui/Progress';
 import { FormControlLabel } from 'material-ui/Form';
@@ -142,12 +141,12 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
         <Typography type="title" color="inherit" className={classes.flex}>
           demo {loading && <span className={classes.loadingHint}>/ loading</span>}
         </Typography>
-        <Settings className={classNames(classes.logo, classes.progress)} />
+        <Fav className={classNames(classes.logo, classes.progress)} />
         <IconButton
           component="a"
           title="GitHub"
           target="_blank"
-          disableRipple={true}
+          disableRipple={true} /* Avoids issue with react 16 beta 3 and Transition */
           color="contrast"
           href="https://github.com/josulliv101/connect-async-work-demo"
         >
