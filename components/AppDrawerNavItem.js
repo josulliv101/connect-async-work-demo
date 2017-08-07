@@ -70,7 +70,7 @@ class AppDrawerNavItem extends Component {
           <Button
             component={Link}
             to={to}
-            // activeClassName={classes.activeButton}
+            activeClassName={classes.activeButton}
             className={classNames(classes.button, classes.navLinkButton)}
             disableRipple
             onClick={this.props.onClick}
@@ -86,7 +86,6 @@ class AppDrawerNavItem extends Component {
         <Button
           classes={{
             root: classes.button,
-            label: openImmediately ? 'algolia-lvl0' : '',
           }}
           disableRipple
           onClick={this.handleClick}

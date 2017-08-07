@@ -48,7 +48,7 @@ function renderNavItems(props, navRoot) {
 function reduceChildRoutes(props, items, childRoute, index) {
 
   if (childRoute.routes && childRoute.routes.length) {
-    const openImmediately = true // props.routes.indexOf(childRoute) !== -1 || false;
+    const openImmediately = false // props.routes.indexOf(childRoute) !== -1 || false;
     items.push(
       <AppDrawerNavItem key={index} openImmediately={openImmediately} title={childRoute.label}>
         {renderNavItems(props, childRoute)}
