@@ -48,10 +48,6 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
       height: 'auto',
       width: 'auto',
     },
-    'a, a:visited, a:active, a:link': {
-      textDecoration: 'none',
-      color: 'inherit',
-    },
     '.delay-route > div:nth-child(2)': {
       display: 'none',
     },
@@ -88,7 +84,9 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
     top: 16,
     left: `calc(50% - ${theme.spacing.unit * 2}px)`,
     // transform: 'translate(-50%, 19%)',
-    margin: `0`
+    margin: `0`,
+    width: 36,
+    height: 36,
   },
   primaryColor: {
     color: 'white',

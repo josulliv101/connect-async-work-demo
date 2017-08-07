@@ -8,7 +8,6 @@ export default function Html({ content, store, css }) {
         <title>connect-async-work demo</title>
         <meta charSet="utf8"/>
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500" />
-        <style dangerouslySetInnerHTML={{ __html: '#main>:nth-child(2){display:none;}' }} />
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }}/>

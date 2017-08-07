@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Home() {
-  console.log('Home / render')
   return (
     <div>
       <h3>Home</h3>

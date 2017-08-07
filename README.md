@@ -1,4 +1,4 @@
 demo app for connect-async-work 
 ===============================
 
-Still in progress.
+[Demo](https://connect-async-work-demo.herokuapp.com/)
