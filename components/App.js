@@ -22,7 +22,7 @@ import Switch from 'material-ui/Switch';
 // import 'typeface-roboto'
 import getRoutes from '../routes'
 import AppDrawer from './AppDrawer'
-import Github from './icons/Github';
+import Github from './icons/GitHub';
 
 const styleSheet = createStyleSheet('AppFrame', theme => ({
 
