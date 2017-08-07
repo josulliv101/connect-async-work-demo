@@ -16,13 +16,14 @@ import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import Settings from 'material-ui-icons/FavoriteBorder'
 import Fav from 'material-ui-icons/FavoriteBorder'
-import AppDrawer from './AppDrawer'
 import { CircularProgress } from 'material-ui/Progress';
 import { FormControlLabel } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
 
 // import 'typeface-roboto'
 import getRoutes from '../routes'
+import AppDrawer from './AppDrawer'
+import Github from './icons/Github';
 
 const styleSheet = createStyleSheet('AppFrame', theme => ({
 
@@ -142,6 +143,16 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
           demo {loading && <span className={classes.loadingHint}>/ loading</span>}
         </Typography>
         <Settings className={classNames(classes.logo, classes.progress)} />
+        <IconButton
+          component="a"
+          title="GitHub"
+          target="_blank"
+          disableRipple={true}
+          color="contrast"
+          href="https://github.com/josulliv101/connect-async-work-demo"
+        >
+          <Github />
+        </IconButton>
       </Toolbar>
     </AppBar>
     <AppDrawer
