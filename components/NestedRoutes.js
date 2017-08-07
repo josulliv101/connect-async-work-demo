@@ -14,6 +14,7 @@ class NestedRoutes extends Component {
 
     const {match} = this.props
     const routes = [
+      { path: '/nested-routes', exact: true, component: () => 'Nested Routes Home Content', label: 'Nested Routes Home', match },
       { path: '/nested-routes/foo', component: NestedRoutesFoo, label: 'Nested Routes Foo', match },
       { path: '/nested-routes/bar', component: NestedRoutesBar, label: 'Nested Routes Bar', match }
     ]
@@ -22,12 +23,13 @@ class NestedRoutes extends Component {
       <div>
         <h3>Nested Routes Async Work Items</h3>
         <ul>
-          <li>Nested Routes > Home: has async work</li>
-          <li>Nested Routes > Foo: has async work</li>
-          <li>Nested Routes > Bar: has no async work</li>
+          <li><em>Nested Routes Home</em> / async work</li>
+          <li><em>Nested Routes Foo</em> / async work</li>
+          <li><em>Nested Routes Bar</em> / no async work</li>
         </ul>
         <h4 className="loadStatus">parent work status is {this.props.loading ? 'loading...' : 'loaded'}</h4>
-        <p>This example has async work associated with nested routes.</p>
+        <p><em>Nested Routes Home</em> is a parent route with async work that has nested child routes.</p>
+        <hr/>
         <div style={{marginLeft: 32}}>
           <Switch >
             {routes.filter(route => !!route.component).map(({match, label, ...route}) => <Route key={route.path} {...route}  />) } 
@@ -41,7 +43,7 @@ class NestedRoutes extends Component {
 export default withAsyncWork(work)(NestedRoutes)
 
 const work2 = [
-  { key: 'nestedChildFoo', work : () => delay(4600).then(() => 'nested Child Route Foo work resolved') }
+  { key: 'nestedChildFoo', work : () => delay(600).then(() => 'nested Child Route Foo work resolved') }
 ]
 
 var NestedRoutesFoo = withAsyncWork(work2)(

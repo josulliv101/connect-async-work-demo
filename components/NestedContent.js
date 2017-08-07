@@ -13,6 +13,7 @@ function NestedContent(props) {
       <h4 className="loadStatus">parent work status is {props.loading ? 'loading...' : 'loaded'}</h4>
       <p>This example has a parent component with async work and also a child component with async work nested within it. Data is displayed when all async work is complete.</p>
   	  <p>{props.nestedParent}</p>	
+      <hr/>
       <NestedContentChild />
   	</div>
   )

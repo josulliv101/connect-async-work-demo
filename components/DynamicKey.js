@@ -16,6 +16,7 @@ function DynamicKey({ loading, keys: [workKey], [workKey]: users = [], ...props 
   	<div>
   		<h3>DynamicKey Async Work</h3>
       <h4 className="loadStatus">DynamicKey work status is {loading ? 'loading...' : 'loaded'}</h4>
+      <p>This example uses a function as an async work item's key. It incorporates the 'id' param into the key. This key maps to where data is stored in the redux store.</p>
   		<p>{users.map(item => <img key={item.id} src={item.avatar} />)}</p>
   	</div>
   )
