@@ -9,7 +9,7 @@ import { batchedSubscribe } from '@josulliv101/connect-async-work'
 import { batchAsyncWork } from './utils'
 import { App, Html } from './components'
 import { configureStore } from './redux/createStore'
-import { configureJss, theme } from './theme'
+import { configureJss, theme } from './style'
 
 export default function (req, res) {
   const sheetsRegistry = new SheetsRegistry()

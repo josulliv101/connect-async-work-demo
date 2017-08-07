@@ -11,7 +11,7 @@ import { batchedSubscribe, middleware as asyncWorkMiddleware, reducer as asyncWo
 //
 import { configureStore } from './redux/createStore'
 import App from './components/App'
-import { theme } from './theme'
+import { theme } from './style'
 
 const store = configureStore(window.__initialState__)
 const history = createHistory()
