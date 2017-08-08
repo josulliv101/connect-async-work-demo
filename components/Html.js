@@ -9,11 +9,6 @@ export default function Html({ content, store, css, useAnalytics }) {
         <meta charSet="utf8"/>
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500" />
         <style id="jss-server-side" dangerouslySetInnerHTML={{ __html: css }} />
-      </head>
-      <body>
-        <div id="root" dangerouslySetInnerHTML={{ __html: content }}/>
-        <script dangerouslySetInnerHTML={{ __html: `window.__initialState__=${serialize(store)}` }}/>
-        <script src="/build/bundle.js"/>
         {useAnalytics && <script dangerouslySetInnerHTML={{ __html: `
         
                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -25,6 +20,11 @@ export default function Html({ content, store, css, useAnalytics }) {
                     ga('send', 'pageview');
         
                   `}} />}
+      </head>
+      <body>
+        <div id="root" dangerouslySetInnerHTML={{ __html: content }}/>
+        <script dangerouslySetInnerHTML={{ __html: `window.__initialState__=${serialize(store)}` }}/>
+        <script src="/build/bundle.js"/>
       </body>
     </html>
   )

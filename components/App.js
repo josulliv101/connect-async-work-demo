@@ -168,7 +168,7 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
     <AppBar elevation={1} className={classes.appBarShift}>
       <Toolbar className={classNames(classes.primaryColor)} >
         <Typography type="title" color="inherit" className={classes.flex}>
-          demo {loading && <span className={classes.loadingHint}>/ loading</span>}
+          universal app demo {loading && <span className={classes.loadingHint}>/ loading</span>}
         </Typography>
         <Fav className={classNames(classes.logo, classes.progress)} />
         <IconButton
