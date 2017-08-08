@@ -48,6 +48,9 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
       height: 'auto',
       width: 'auto',
     },
+    '.delay-route': {
+      flex: '0 1 auto',
+    },
     '.delay-route > div:nth-child(2)': {
       display: 'none',
     },
@@ -105,25 +108,50 @@ const styleSheet = createStyleSheet('AppFrame', theme => ({
     fontWeight: 300,
     fontSize: 16,
   },
-  content: theme.mixins.gutters({
-    paddingTop: 80,
-    flex: '1 1 100%',
+  content: {
+    padding: '80px 0 0',
+    borderLeft: '1px solid rgba(0, 0, 0, 0.12)',
+    borderRight: '1px solid rgba(0, 0, 0, 0.12)',
+    background: '#fff',
+    opacity: 1,
+    '&$lite': {
+      opacity: .4,
+    },
+    position: 'relative',
+    zIndex: 999,
+    transition: 'opacity .25s ease-in-out',
+    display: 'flex',
+    flexDirection: 'column',
     maxWidth: '100%',
+    width: '100%',
     margin: '0 auto',
-  }),
+    minHeight: 'calc(100% - 64px)',
+    '&>footer': {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: '0 1 auto',
+
+    },
+    '&>main': {
+      padding: '0 32px',
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+    },
+  },
   footer: {
     bottom: 0,
     left: 'auto',
     right: 0,
-    position: 'fixed',
-    width: 'calc(100% - 250px)',
+    position: 'static',
+    width: '100%',
     background: common.faintBlack,
     color: common.lightBlack,
     '& > p': {
-      lineHeight: '64px',
+      lineHeight: '54px',
       '& > :first-child': {
         position: 'relative',
-        top: 3,
+        top: 4,
       }
     }
   },
@@ -173,10 +201,10 @@ const App = ({ loading, classes }, { asyncRender = false }) => (
           </RouteSwitch>
         </DelayRoute>
       </main>
+      <footer className={classes.footer}>
+        <Typography align="center" color="inherit"><Fav style={{width: 16, height: 16}} />  Check out the next version of <a style={{fontWeight: 500}} target="_blank" href="https://material-ui-1dab0.firebaseapp.com/">Material-UI</a>.</Typography>
+      </footer>
     </section>
-    <footer className={classes.footer}>
-      <Typography align="center" color="inherit"><Fav style={{width: 16, height: 16}} />  Check out the next version of <a style={{fontWeight: 500}} target="_blank" href="https://material-ui-1dab0.firebaseapp.com/">Material-UI</a>.</Typography>
-    </footer>
   </div> 
 )
 
