@@ -3,8 +3,8 @@
 
 
 "@josulliv101/connect-async-work@latest":
-  version "1.4.10"
-  resolved "https://registry.yarnpkg.com/@josulliv101/connect-async-work/-/connect-async-work-1.4.10.tgz#ed3acd1779b97152cb2be86133e40bf938a0eed5"
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/@josulliv101/connect-async-work/-/connect-async-work-1.4.11.tgz#fe170dfa11380459890ff60f225053bbc8b99510"
   dependencies:
     babel-runtime "^6.23.0"
     invariant "^2.2.2"
@@ -3373,8 +3373,8 @@ node-dir@^0.1.10:
     minimatch "^3.0.2"
 
 node-fetch@^1.0.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.1.tgz#899cb3d0a3c92f952c47f1b876f4c8aeabd400d5"
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.2.tgz#c54e9aac57e432875233525f3c891c4159ffefd7"
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"

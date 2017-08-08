@@ -53,7 +53,7 @@ var NestedRoutesFoo = withAsyncWork(work2)(
 
     return (
       <div>
-        <h3>NestedRoutesFoo Async Work Items</h3>
+        <h3>Nested Routes Foo Async Work Items</h3>
         <h4 className="loadStatus">nested child work status is {props.loading ? 'loading...' : 'loaded'}</h4>
         <p>{props.nestedChildFoo}</p> 
       </div>
@@ -64,7 +64,7 @@ var NestedRoutesFoo = withAsyncWork(work2)(
 function NestedRoutesBar(props) {
   return (
     <div>
-      <h3>NestedRoutesBar No Work Items</h3>
+      <h3>Nested Routes Bar No Work Items</h3>
       <h4>nested child work status is {props.loading ? 'loading...' : 'loaded'}</h4>
       <p>No async work</p> 
     </div>
